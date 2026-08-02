@@ -39,6 +39,7 @@ function AuthPage() {
       if (response.ok) {
         localStorage.setItem('userId', data._id);
         localStorage.setItem('userName', data.name);
+        localStorage.setItem('profilePic', data.profilePic || '');
         navigate('/feed');
       } else {
         setMessage(`❌ ${data.message}`);

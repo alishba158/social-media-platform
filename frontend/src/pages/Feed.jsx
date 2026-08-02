@@ -93,6 +93,7 @@ function Feed() {
   const handleLogout = () => {
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
+    localStorage.removeItem('profilePic');
     navigate('/');
   };
 
@@ -109,7 +110,7 @@ function Feed() {
             onClick={() => navigate('/profile')}
             style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
           >
-            <Avatar name={userName} size={45} />
+            <Avatar name={userName} profilePic={localStorage.getItem('profilePic')} size={45} />
             <h1 style={{ color: textColor, fontSize: '22px' }}>Hi, {userName}</h1>
           </div>
           <div style={{ display: 'flex', gap: '10px' }}>
@@ -194,7 +195,7 @@ function Feed() {
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px' }}>
-                  <Avatar name={post.user?.name} size={40} />
+                  <Avatar name={post.user?.name} profilePic={post.user?.profilePic} size={40} />
                   <div>
                     <h3 style={{ color: textColor, fontSize: '15px' }}>{post.user?.name}</h3>
                     <span style={{ color: subTextColor, fontSize: '12px' }}>{timeAgo(post.createdAt)}</span>
